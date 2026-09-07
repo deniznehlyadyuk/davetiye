@@ -29,7 +29,11 @@ const Card = styled.div`
 
 const Photo = styled.img`
   width: 100%;
-  height: min(64svh, 500px);
+  height: min(64vh, 500px);
+
+  @supports (height: 100dvh) {
+    height: min(64dvh, 500px);
+  }
   object-fit: cover;
   filter: grayscale(1);
   border: 1px solid #171717;

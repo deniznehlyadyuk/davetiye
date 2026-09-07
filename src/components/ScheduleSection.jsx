@@ -13,7 +13,7 @@ const Content = styled.div`
   position: relative;
   z-index: 3;
   width: min(100%, 680px);
-  max-height: 90svh;
+  max-height: calc(var(--app-height) - 3rem);
   overflow: auto;
   scrollbar-width: none;
 

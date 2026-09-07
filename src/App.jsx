@@ -6,11 +6,13 @@ import { ScheduleSection } from './components/ScheduleSection';
 import { RsvpSection } from './components/RsvpSection';
 
 const SnapContainer = styled.main`
-  height: 100vh;
-  height: 100svh;
+  width: 100%;
+  height: var(--app-height);
+  overflow-x: hidden;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   overscroll-behavior-y: contain;
+  touch-action: pan-y;
 `;
 
 export default function App() {
