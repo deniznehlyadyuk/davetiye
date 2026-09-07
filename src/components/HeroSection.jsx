@@ -2,8 +2,10 @@ import styled from '@emotion/styled';
 import { Section } from './ui/Section';
 import { WEDDING } from '../constants/wedding';
 
+const heroImage = `${import.meta.env.BASE_URL}images/editorial-couple.jpg`;
+
 const Hero = styled(Section)`
-  background: linear-gradient(rgba(0, 0, 0, .22), rgba(0, 0, 0, .22)), url('/images/editorial-couple.jpg') center / cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, .22), rgba(0, 0, 0, .22)), url('${heroImage}') center / cover no-repeat;
   display: grid;
   place-items: center;
   color: white;

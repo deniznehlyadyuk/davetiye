@@ -3,6 +3,8 @@ import { Section } from './ui/Section';
 import { useCountdown } from '../hooks/useCountdown';
 import { WEDDING_DATE } from '../constants/wedding';
 
+const countdownImage = `${import.meta.env.BASE_URL}images/countdown-couple.jpg`;
+
 const Wrap = styled(Section)`
   display: grid;
   place-items: center;
@@ -15,7 +17,7 @@ const Wrap = styled(Section)`
     inset: 0;
     background:
       linear-gradient(rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)),
-      url('/images/countdown-couple.jpg') center 35% / cover no-repeat;
+      url('${countdownImage}') center 35% / cover no-repeat;
     filter: grayscale(1);
     pointer-events: none;
   }

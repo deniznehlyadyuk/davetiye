@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { Section } from './ui/Section';
 import { WEDDING } from '../constants/wedding';
 
+const invitationImage = `${import.meta.env.BASE_URL}images/gallery-1.jpeg`;
+
 const Wrap = styled(Section)`
   background: #f8f5ee;
   display: grid;
@@ -69,7 +71,7 @@ export function InvitationSection() {
   return (
     <Wrap>
       <Card>
-        <Photo src="/images/gallery-1.jpeg" alt="Deniz ve Çağlasu düğün fotoğrafı" />
+        <Photo src={invitationImage} alt="Deniz ve Çağlasu düğün fotoğrafı" />
         <Copy>
           <h2>Düğünümüze Davetlisiniz</h2>
           <p>Hayatlarımızı birleştirdiğimiz bu özel günde mutluluğumuzu sizinle paylaşmak, en güzel anılarımızdan birini birlikte yazmak istiyoruz.</p>
