@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import { Section } from './ui/Section';
+import { FireflyAmbience } from './ui/FireflyAmbience';
 import { Button } from './ui/Button';
 import { RsvpModal } from './RsvpModal';
 
@@ -54,9 +55,10 @@ export function RsvpSection() {
 
   return (
     <Wrap>
+      <FireflyAmbience theme="dark" />
       <Content>
         <div className="script">Katılım</div>
-        <h2>Bizimle olacak mısınız?</h2>
+        <h2>Sizi aramızda görecek miyiz?</h2>
         <p>Hazırlıklarımızı tamamlayabilmemiz için katılım durumunuzu bizimle paylaşmanızı rica ederiz.</p>
         <Choices>
           <Button onClick={() => setStatus('attending')}>Katılacağım</Button>

@@ -148,7 +148,7 @@ export function RsvpModal({ status, onClose }) {
           </div>
           {status === 'attending' && (
             <div className="field">
-              <label htmlFor="guest-count">Toplam Katılımcı Sayısı</label>
+              <label htmlFor="guest-count">Kaç Kişi Katılacaksınız? (Sen Dahil)</label>
               <input
                 id="guest-count"
                 type="number"

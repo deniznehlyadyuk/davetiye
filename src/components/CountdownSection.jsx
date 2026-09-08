@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Section } from './ui/Section';
+import { FireflyAmbience } from './ui/FireflyAmbience';
 import { useCountdown } from '../hooks/useCountdown';
 import { WEDDING_DATE } from '../constants/wedding';
 
@@ -60,6 +61,7 @@ export function CountdownSection() {
 
   return (
     <Wrap aria-label="Düğüne kalan süre">
+      <FireflyAmbience theme="dark" />
       <Counter>
         {items.map(([label, value]) => (
           <div key={label}>

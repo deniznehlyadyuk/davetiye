@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Section } from './ui/Section';
+import { FireflyAmbience } from './ui/FireflyAmbience';
 import { SCHEDULE } from '../constants/wedding';
 
 const Wrap = styled(Section)`
@@ -50,6 +51,7 @@ const Row = styled.div`
 export function ScheduleSection() {
   return (
     <Wrap>
+      <FireflyAmbience theme="light" />
       <Content>
         <div className="eyebrow">26 Eylül 2026</div>
         <h2>Düğün Günü<br />Programı</h2>
