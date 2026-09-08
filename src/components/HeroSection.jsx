@@ -56,6 +56,11 @@ const Mark = styled.div`
   position: relative;
   z-index: 3;
   text-shadow: 0 2px 20px rgba(0, 0, 0, .26);
+  transform: translateY(clamp(2rem, 7vh, 4rem));
+
+  @supports (height: 100dvh) {
+    transform: translateY(clamp(2rem, 7dvh, 4rem));
+  }
 
   .initials {
     font-family: 'Great Vibes', cursive;

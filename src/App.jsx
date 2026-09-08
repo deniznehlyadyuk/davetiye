@@ -4,6 +4,7 @@ import { InvitationSection } from './components/InvitationSection';
 import { CountdownSection } from './components/CountdownSection';
 import { ScheduleSection } from './components/ScheduleSection';
 import { RsvpSection } from './components/RsvpSection';
+import { BackgroundMusic } from './components/BackgroundMusic';
 
 const SnapContainer = styled.main`
   width: 100%;
@@ -17,12 +18,15 @@ const SnapContainer = styled.main`
 
 export default function App() {
   return (
-    <SnapContainer>
-      <HeroSection />
-      <InvitationSection />
-      <CountdownSection />
-      <ScheduleSection />
-      <RsvpSection />
-    </SnapContainer>
+    <>
+      <BackgroundMusic />
+      <SnapContainer>
+        <HeroSection />
+        <InvitationSection />
+        <CountdownSection />
+        <ScheduleSection />
+        <RsvpSection />
+      </SnapContainer>
+    </>
   );
 }

@@ -78,6 +78,18 @@ const Modal = styled.div`
     margin-top: 1rem;
   }
 
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .feedback {
     min-height: 1.1rem;
     margin-top: 0.7rem;
@@ -95,16 +107,34 @@ const titles = {
 export function RsvpModal({ status, onClose }) {
   useLockBodyScroll(Boolean(status));
   const [fullName, setFullName] = useState('');
-  const [guestCount, setGuestCount] = useState(1);
+  const [guestCount, setGuestCount] = useState('1');
   const [state, setState] = useState({ loading: false, message: '', error: false });
 
   useEffect(() => {
     setFullName('');
-    setGuestCount(1);
+    setGuestCount('1');
     setState({ loading: false, message: '', error: false });
   }, [status]);
 
   if (!status) return null;
+
+  const handleGuestCountChange = (event) => {
+    const digitsOnly = event.target.value.replace(/\D/g, '');
+    const normalized = digitsOnly.replace(/^0+(?=\d)/, '');
+
+    if (normalized === '') {
+      setGuestCount('');
+      return;
+    }
+
+    setGuestCount(String(Math.min(Number(normalized), 20)));
+  };
+
+  const handleGuestCountBlur = () => {
+    if (!guestCount || Number(guestCount) < 1) {
+      setGuestCount('1');
+    }
+  };
 
   const submit = async (event) => {
     event.preventDefault();
@@ -112,13 +142,19 @@ export function RsvpModal({ status, onClose }) {
       return setState({ loading: false, message: 'Lütfen ad soyad girin.', error: true });
     }
 
-    if (status === 'attending' && guestCount < 1) {
+    const normalizedGuestCount = Number(guestCount || 1);
+
+    if (status === 'attending' && normalizedGuestCount < 1) {
       return setState({ loading: false, message: 'Katılımcı sayısı en az 1 olmalı.', error: true });
     }
 
     try {
       setState({ loading: true, message: '', error: false });
-      await sendRsvp({ status, fullName: fullName.trim(), guestCount });
+      await sendRsvp({
+        status,
+        fullName: fullName.trim(),
+        guestCount: status === 'attending' ? normalizedGuestCount : undefined,
+      });
       setState({ loading: false, message: 'Teşekkürler, yanıtınız iletildi.', error: false });
     } catch (error) {
       setState({
@@ -151,12 +187,17 @@ export function RsvpModal({ status, onClose }) {
               <label htmlFor="guest-count">Kaç Kişi Katılacaksınız? (Sen Dahil)</label>
               <input
                 id="guest-count"
-                type="number"
-                min="1"
-                max="20"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                autoComplete="off"
+                maxLength={2}
                 value={guestCount}
-                onChange={(e) => setGuestCount(Number(e.target.value))}
+                onChange={handleGuestCountChange}
+                onBlur={handleGuestCountBlur}
+                aria-describedby="guest-count-hint"
               />
+              <span id="guest-count-hint" className="sr-only">1 ile 20 arasında kişi sayısı girin.</span>
             </div>
           )}
           <div className="actions">

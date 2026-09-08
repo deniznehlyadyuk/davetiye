@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import { Section } from './ui/Section';
 import { FireflyAmbience } from './ui/FireflyAmbience';
 import { WEDDING } from '../constants/wedding';
@@ -35,6 +36,7 @@ const Photo = styled.img`
   @supports (height: 100dvh) {
     height: min(64dvh, 500px);
   }
+
   object-fit: cover;
   filter: grayscale(1);
   border: 1px solid #171717;
@@ -48,28 +50,36 @@ const Copy = styled.div`
     line-height: .95;
     margin: 0 0 1rem;
   }
+
   p {
     font-family: 'Cormorant Garamond', serif;
     margin: 0 0 .9rem;
     font-size: clamp(.82rem, 3vw, 1rem);
     line-height: 1.45;
   }
+
   .date { font-weight: 600; }
   .address { opacity: .68; }
 `;
 
 const LinkButton = styled.a`
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  margin-top: .35rem;
-  font-size: .64rem;
-  padding: .85rem .8rem;
   min-height: 46px;
-  border: 1px solid currentColor;
-  letter-spacing: .08em;
+  padding: .85rem .95rem;
+  background: #171717;
+  color: #fff;
+  text-decoration: none;
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .1em;
   text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus-visible { outline: none; }
 `;
 
 export function InvitationSection() {
